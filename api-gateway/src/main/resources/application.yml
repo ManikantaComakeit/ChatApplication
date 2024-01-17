@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: api-gateway
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  cloud:
+    gateway:
+      routes:
+        - id: chat-websocket
+          uri: lb://chat-websocket
+          predicates:
+            - Path=/api/chat
+
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/users/**
+
+        - id: discovery-server
+          uri: http://localhost:8761
+          predicates:
+            - Path=/eureka/web
+          filters:
+            - SetPath=/
+
+        - id: discovery-server-static
+          uri: http://localhost:8761
+          predicates:
+            - Path=/eureka/**
+server:
+  port: 8080
