@@ -1,11 +1,11 @@
-package com.chatapplication;
+package org.chatapplication.UserService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ChatWebSocket {
+public class UserService {
     public static void main(String[] args) {
-        SpringApplication.run(ChatWebSocket.class, args);
+        SpringApplication.run(UserService.class, args);
     }
 }
