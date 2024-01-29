@@ -12,7 +12,7 @@ spring:
           predicates:
             - Path=/api/chat
 
-        - id: user-service
+        - id: user-servi
           uri: lb://user-service
           predicates:
             - Path=/api/users/**
@@ -29,11 +29,27 @@ spring:
           predicates:
             - Path=/eureka/**
 
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:9090/realms/ChatApplication
+#  security:
+#    oauth2:
+#      client:
+#        provider:
+#          keycloak:
+#            issuer-uri: http://localhost:9090/realms/ChatApplication
+#        registration:
+#          keycloak:
+#            client-id: api-gateway
+#            client-secret: 29e0UjZTAhzHYl8MxhqddliacKYN6Pvu
+#            authorization-grant-type: authorization_code
+#            authorization-uri: http://localhost:9090/realms/ChatApplication/protocol/openid-connect/auth
+#            redirect-uri: "http://localhost:8080/login/oauth2/code/{registrationId}"
+#            scope: openid
+
+    security:
+      oauth2:
+        resourceserver:
+          jwt:
+            issuer-uri: http://localhost:9090/realms/ChatApplication
+
 
 server:
   port: 8080

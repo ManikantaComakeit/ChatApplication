@@ -20,6 +20,7 @@ public class SecurityConfig {
                                 .anyExchange()
                                 .authenticated())
                 .oauth2ResourceServer(spec -> spec.jwt(Customizer.withDefaults()));
+//                .oauth2Login(Customizer.withDefaults());
         return serverHttpSecurity.build();
 
     }
